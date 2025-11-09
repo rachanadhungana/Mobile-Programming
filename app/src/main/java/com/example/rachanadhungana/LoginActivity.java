@@ -1,5 +1,6 @@
 package com.example.rachanadhungana;
 
+import android.app.ComponentCaller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.graphics.Insets;
@@ -68,8 +76,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(v.getId()==R.id.tvSignUp){
             Intent intent=new Intent(LoginActivity.this,MainActivity.class);
             intent.putExtra("Email","rachanadhungana88@gmail.com");
-            startActivity(intent);
-            finish();
+            signUpActivityLauncher.launch(intent);
 
     }else if(v.getId()==R.id.btnlogin){
             String email = editEmail.getText().toString().trim();
@@ -90,5 +97,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             }
         }
+    }
+
+    ActivityResultLauncher<Intent> signUpActivityLauncher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult activityResult) {
+            if (activityResult.getResultCode()==RESULT_OK){
+                Toast.makeText(LoginActivity.this,activityResult.getResultCode(),Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    }) ;
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data, @NonNull ComponentCaller caller) {
+        if(requestCode==200 && resultCode==RESULT_OK){
+            Toast.makeText(LoginActivity.this,data.getStringExtra("Result"),Toast.LENGTH_SHORT).show();
+        }
+        super.onActivityResult(requestCode, resultCode, data, caller);
     }
 }
