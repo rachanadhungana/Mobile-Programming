@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -158,14 +157,42 @@
                 android:layout_marginTop="16dp"
                 android:background="@drawable/edit_background"
                 android:drawableEnd="@drawable/dropdown"
-                android:entries="@array/genderValue"
                 android:drawablePadding="16dp"
+                android:entries="@array/genderValue"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="10dp"
                 android:spinnerMode="dropdown"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txtGender" />
+
+            <RadioGroup
+                android:id="@+id/rgGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkedButton="@id/rdfemale"
+                app:layout_constraintTop_toBottomOf="@id/spinnerGender">
+
+                <RadioButton
+                    android:id="@+id/rdmale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/male" />
+
+                <RadioButton
+                    android:id="@+id/rdfemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female" />
+
+                <RadioButton
+                    android:id="@+id/rdothers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/others" />
+
+
+            </RadioGroup>
 
             <!-- Register Button -->
             <androidx.appcompat.widget.AppCompatButton
@@ -179,7 +206,7 @@
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spinnerGender" />
+                app:layout_constraintTop_toBottomOf="@id/rgGender" />
 
             <!-- Login Redirect -->
             <TextView
