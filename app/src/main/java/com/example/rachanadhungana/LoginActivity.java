@@ -3,6 +3,8 @@ package com.example.rachanadhungana;
 import android.app.ComponentCaller;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -19,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -30,10 +33,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private AppCompatButton btnLogin;
     private TextView txtForgotPassword, tvSignUp;
 
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_login);
+        initToolbar();
         findViews();
 
     }
@@ -44,6 +50,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin=findViewById(R.id.btnlogin);;
         txtForgotPassword=findViewById(R.id.forgotpassword);
         tvSignUp=findViewById(R.id.tvSignUp);
+        toolbar=findViewById(R.id.toolbar);
         tvSignUp.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
 
@@ -69,6 +76,38 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //                }
 //            }
 //        });
+    }
+    private void initToolbar(){
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.user);
+        getSupportActionBar().setTitle("Login page");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id= item.getItemId();
+        if(id==android.R.id.home){
+            Toast.makeText(LoginActivity.this, "Profile Clicker", Toast.LENGTH_SHORT).show();
+        }
+        else if(id==R.id.cart){
+            Toast.makeText(LoginActivity.this, "Cart is clicked", Toast.LENGTH_SHORT).show();
+        }
+        else if(id==R.id.notification){
+            Toast.makeText(LoginActivity.this, "Notification is clicked", Toast.LENGTH_SHORT).show();
+        }
+        else if(id==android.R.id.message){
+            Toast.makeText(LoginActivity.this, "Message is clicked", Toast.LENGTH_SHORT).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
