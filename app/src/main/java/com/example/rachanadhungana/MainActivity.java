@@ -2,6 +2,9 @@ package com.example.rachanadhungana;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,11 +17,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatSpinner;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     private AppCompatButton btnRegister;
     private AppCompatSpinner spinnerGender;
     private RadioGroup rgGender;
@@ -35,17 +39,34 @@ public class MainActivity extends AppCompatActivity {
         rgGender=findViewById(R.id.rgGender);
         setSpinnerGender();
         setRadioGroup();
+        registerForContextMenu(btnRegister);
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent();
-                intent.putExtra("Result","Result Return");
-                setResult(RESULT_OK,intent);
-                finish();
+                showMenu();
+//                Intent intent=new Intent();
+//                intent.putExtra("Result","Result Return");
+//                setResult(RESULT_OK,intent);
+//                finish();
             }
         });
 
     }
+    public void showMenu(){
+        PopupMenu popupMenu=new PopupMenu(this,btnRegister);
+        popupMenu.inflate(R.menu.toolbar_menu);
+        popupMenu.setOnMenuItemClickListener(this);
+        popupMenu.show();
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        if(v.getId()==R.id.btnRegister){
+            getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        }
+    }
+
     private void setRadioGroup(){
         rgGender.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -71,5 +92,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        return false;
     }
 }

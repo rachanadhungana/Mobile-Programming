@@ -5,17 +5,17 @@
     <item
         android:id="@+id/cart"
         app:showAsAction="always"
-        android:title="Cart"
+        android:title="Cart1"
         android:icon="@drawable/trolley"/>
     <item
         android:id="@+id/notification"
         app:showAsAction="always"
-        android:title="Cart"
+        android:title="Cart2"
         android:icon="@drawable/notification"/>
     <item
         android:id="@+id/message"
         app:showAsAction="always"
-        android:title="Cart"
+        android:title="Cart3"
         android:icon="@drawable/chat"/>
 
 </menu>
