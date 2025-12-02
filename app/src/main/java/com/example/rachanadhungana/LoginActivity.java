@@ -132,7 +132,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
             } else {
-                Toast.makeText(LoginActivity.this,"Login successful",Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(LoginActivity.this, DashboardActivity.class);
+                startActivity(intent);
+//                Toast.makeText(LoginActivity.this,"Login successful",Toast.LENGTH_SHORT).show();
 
             }
         }

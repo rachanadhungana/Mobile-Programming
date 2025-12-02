@@ -45,7 +45,7 @@
                 android:layout_weight="1"
                 android:hint="Type a message..."
                 android:padding="12dp"
-                android:background="@drawable/edittext_bg"/>
+                android:background="@drawable/edit_background"/>
 
             <ImageButton
                 android:id="@+id/btnSend"

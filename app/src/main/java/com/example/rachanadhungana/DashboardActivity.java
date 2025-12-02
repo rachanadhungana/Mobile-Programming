@@ -18,6 +18,7 @@ public class DashboardActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
+    private int[] icons={R.drawable.ic_home,R.drawable.chat,R.drawable.user};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,14 @@ public class DashboardActivity extends AppCompatActivity {
         tabLayout=findViewById(R.id.tabLayout);
         viewPager=findViewById(R.id.viewpager);
         setViewPager();
+        tabLayout.setupWithViewPager(viewPager);
+        setIcon();
 
+    }
+    private void setIcon(){
+        tabLayout.getTabAt(0).setIcon(icons[0]);
+        tabLayout.getTabAt(1).setIcon(icons[1]);
+        tabLayout.getTabAt(2).setIcon(icons[2]);
     }
     private void setViewPager(){
         adapter=new ViewPagerAdapter(getSupportFragmentManager());
