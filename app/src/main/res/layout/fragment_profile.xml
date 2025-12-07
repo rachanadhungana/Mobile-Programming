@@ -17,11 +17,15 @@
         android:layout_gravity="top|center_horizontal"
 
        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
     <Button
         android:id="@+id/btnAlert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:text="Show Alert Dialog"
         android:textAllCaps="false"/>
 
@@ -29,8 +33,8 @@
         android:id="@+id/btnCustom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:text="Show Custom Dialog"
         android:textAllCaps="false"/>
+    </LinearLayout>
 
 </FrameLayout>
