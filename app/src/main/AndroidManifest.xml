@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication">
         <activity
+            android:name=".GridAdapter"
+            android:exported="false" />
+        <activity
+            android:name=".ProductGridActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProductListAdapter"
             android:exported="false" />
         <activity
