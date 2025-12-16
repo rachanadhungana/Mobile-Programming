@@ -132,7 +132,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
             } else {
-                Intent intent=new Intent(LoginActivity.this, ProductGridActivity.class);
+                Intent intent=new Intent(LoginActivity.this, ProductRecyclerActivity.class);
                 startActivity(intent);
 //                Toast.makeText(LoginActivity.this,"Login successful",Toast.LENGTH_SHORT).show();
 
