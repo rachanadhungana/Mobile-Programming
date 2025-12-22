@@ -37,4 +37,11 @@ dependencies {
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+    //noinspection NewerVersionAvailable
+    implementation libs.converter.gson
+    implementation libs.gson
+    //noinspection NewerVersionAvailable
+    implementation libs.picasso
+    //noinspection NewerVersionAvailable
+    implementation libs.okhttp
 }

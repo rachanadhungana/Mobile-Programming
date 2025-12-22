@@ -1,8 +1,11 @@
 package com.example.rachanadhungana;
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
@@ -12,7 +15,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class ProductRecyclerActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -87,5 +97,39 @@ public class ProductRecyclerActivity extends AppCompatActivity {
         productList.add(p3);
         productList.add(p4);
         productList.add(p5);
+    }
+    class JSONAsyncTask extends AsyncTask<Void,Void,Boolean>{
+        ProgressDialog p=new ProgressDialog(ProductRecyclerActivity.this);
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            p.setTitle("Please Wait...");
+            p.setIndeterminate(false);
+            p.setCancelable(false);
+            p.show();
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            OkHttpClient client=new OkHttpClient();
+            Request request=new Request.Builder().url("http://api.themoviedb.org/3/movie/upcoming?api_key=ef8f48b43832a9e95b87408bf739ed51").build();
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(@NonNull Call call, @NonNull IOException e) {
+
+                }
+
+                @Override
+                public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+
+                }
+            });
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+        }
     }
 }
