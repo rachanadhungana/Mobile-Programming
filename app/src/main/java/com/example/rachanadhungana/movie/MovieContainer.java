@@ -6,13 +6,14 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class MovieContainer {
+
     @SerializedName("page")
     @Expose
     int page;
 
     @SerializedName("results")
     @Expose
-    List<Results> resultslist;
+    List<Results> resultList;
 
     public int getPage() {
         return page;
@@ -22,11 +23,11 @@ public class MovieContainer {
         this.page = page;
     }
 
-    public List<Results> getResultslist() {
-        return resultslist;
+    public List<Results> getResultList() {
+        return resultList;
     }
 
-    public void setResultslist(List<Results> resultslist) {
-        this.resultslist = resultslist;
+    public void setResultList(List<Results> resultList) {
+        this.resultList = resultList;
     }
 }
